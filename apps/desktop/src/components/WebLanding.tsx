@@ -109,16 +109,16 @@ export function WebLanding({ appName, downloadUrl, windowsSupport }: WebLandingP
             </p>
 
             <h1 className="max-w-xl text-3xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl sm:leading-[1.03] lg:text-7xl">
-              OYUN, TOPLULUK VE
+              SOHBETİ WEB VE
               <br />
-              SOHBET İÇİN
+              MASAÜSTÜNDE
               <br />
-              YENİ NESİL ALAN
+              DEVAM ETTİR
             </h1>
 
             <p className="max-w-xl text-base leading-7 text-slate-200/90 sm:text-lg sm:leading-8">
-              Arkadaşlarınla DM konuş, sunucu kur, yazılı ve sesli kanallarda takıl. Web veya masaüstü fark etmeden aynı
-              deneyimi anında yaşa.
+              Arkadaşlarınla DM konuş, sunucu aç, yazılı ve sesli kanalları kullan. Web ve masaüstünde aynı hesabınla
+              kaldığın yerden devam edebilirsin.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -168,7 +168,7 @@ export function WebLanding({ appName, downloadUrl, windowsSupport }: WebLandingP
               </div>
             </div>
             <div className="absolute bottom-4 right-4 rounded-2xl border border-cyan-300/25 bg-cyan-400/20 px-3 py-2 text-xs font-semibold text-cyan-100 sm:bottom-7 sm:right-8 sm:px-4 sm:py-3 sm:text-sm lg:bottom-9 lg:right-10">
-              Web + Desktop senkron
+              Web + masaüstü senkron
             </div>
           </div>
         </section>

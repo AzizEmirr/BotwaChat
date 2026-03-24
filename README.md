@@ -6,10 +6,10 @@ Resmi site: **https://catwa.chat**
 Geliştirici: **Kyu Software**
 
 ## Durum
-- Bu proje şu anda **Beta (active development)** aşamasındadır.
+- Bu proje şu anda **Beta (aktif geliştirme)** aşamasındadır.
 - API ve arayüz davranışları yeni sürümlerde değişebilir.
 - Bazı özelliklerde performans/senkronizasyon iyileştirmeleri devam ediyor.
-- Production kullanımından önce test ortamında doğrulama önerilir.
+- Canlı kullanımdan önce test ortamında doğrulama önerilir.
 
 ## Teknoloji
 - Frontend: React + TypeScript + TailwindCSS

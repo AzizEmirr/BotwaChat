@@ -1,16 +1,17 @@
 # Catwa Reklam Metni
 
-## Kisa Metin
-Catwa ile gercek zamanli DM ve kanal sohbetine gec. Web ve desktop'ta hizli, akici ve modern deneyim.  
+## Kısa Metin
+Catwa, web ve masaüstünde çalışan bir sohbet uygulamasıdır.  
+DM ve kanal konuşmalarını tek yerde toplar.  
 Resmi site: https://catwa.chat  
-Gelistirici: Kyu Software
+Geliştirici: Kyu Software
 
 ## Sosyal Medya Metni
-Catwa yayinda.  
-Gercek zamanli mesajlasma, modern arayuz, web + desktop deneyimi tek yerde.
+Catwa’yı geliştirmeye devam ediyoruz.  
+Web ve masaüstü sürümlerini sade bir sohbet deneyimi için birlikte sürdürüyoruz.
 
-Hemen dene: https://catwa.chat  
+İncelemek için: https://catwa.chat  
 Kyu Software
 
-## Tek Satir Slogan
-Catwa: Gercek zamanli sohbetin yeni standardi. | https://catwa.chat | Kyu Software
+## Tek Satır Metin
+Catwa | https://catwa.chat | Kyu Software

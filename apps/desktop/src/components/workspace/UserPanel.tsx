@@ -206,7 +206,7 @@ export function UserPanel({
                 <p className="catwa-personal-info mt-2 truncate text-3xl font-semibold text-slate-100">
                   {currentUser?.displayName ?? "Kullanıcı"}
                 </p>
-                <p className="catwa-personal-info truncate text-sm text-slate-300">@{currentUser?.username ?? "kullanici"}</p>
+                <p className="catwa-personal-info truncate text-sm text-slate-300">@{currentUser?.username ?? "kullanıcı"}</p>
                 <p className="mt-1 text-sm text-slate-300">{presenceMeta.label}</p>
               </div>
             </div>
