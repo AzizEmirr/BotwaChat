@@ -46,13 +46,33 @@ jobs:
         run: |
           gosec -quiet -severity medium -confidence medium -fmt sarif -out gosec.sarif ./...
 
-      - name: Ensure SARIF file exists
+      - name: Check SARIF has findings
+        id: sarif_check
         run: |
           if [ ! -f gosec.sarif ]; then
-            echo '{"version":"2.1.0","runs":[]}' > gosec.sarif
+            echo "has_results=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          HAS_RESULTS="$(python3 - << 'PY'
+import json
+from pathlib import Path
+
+path = Path("gosec.sarif")
+try:
+    data = json.loads(path.read_text(encoding="utf-8"))
+except Exception:
+    print("false")
+    raise SystemExit(0)
+
+runs = data.get("runs") or []
+has_results = any((run.get("results") or []) for run in runs)
+print("true" if has_results else "false")
+PY
+          )"
+          echo "has_results=${HAS_RESULTS}" >> "$GITHUB_OUTPUT"
 
       - name: Upload gosec report
+        if: steps.sarif_check.outputs.has_results == 'true'
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: apps/server/gosec.sarif
