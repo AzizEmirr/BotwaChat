@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catwa Offline</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        font-family: "Sora", "Inter", "Segoe UI", sans-serif;
+        background: radial-gradient(circle at 10% 10%, #1b2b54, #0b1020 55%);
+        color: #e2e8f0;
+      }
+
+      main {
+        width: min(560px, calc(100vw - 2rem));
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.78);
+        padding: 1.25rem 1rem;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 0.4rem;
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Bağlantı yok</h1>
+      <p>İnternet gelince Catwa otomatik devam edecek.</p>
+    </main>
+  </body>
+</html>

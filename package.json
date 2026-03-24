@@ -1,0 +1,29 @@
+{
+    "name":  "catwa",
+    "private":  true,
+    "version":  "0.1.4",
+    "workspaces":  [
+                       "apps/*",
+                       "packages/*"
+                   ],
+    "scripts":  {
+                    "desktop:dev":  "npm run electron:dev --workspace @catwa/desktop",
+                    "desktop:start":  "npm run electron:start --workspace @catwa/desktop",
+                    "desktop:web:dev":  "npm run dev --workspace @catwa/desktop",
+                    "desktop:build":  "npm run electron:build --workspace @catwa/desktop",
+                    "desktop:renderer:build":  "npm run build --workspace @catwa/desktop",
+                    "desktop:release:stable":  "npm run release:stable --workspace @catwa/desktop",
+                    "desktop:typecheck":  "npm run typecheck --workspace @catwa/desktop",
+                    "desktop:test":  "npm run test --workspace @catwa/desktop",
+                    "desktop:check:encoding":  "npm run check:encoding --workspace @catwa/desktop",
+                    "desktop:qa":  "npm run desktop:check:encoding \u0026\u0026 npm run desktop:typecheck \u0026\u0026 npm run desktop:test \u0026\u0026 npm run desktop:renderer:build",
+                    "tunnel:api":  "cloudflared tunnel --url http://localhost:8080 --no-autoupdate",
+                    "tunnel:livekit":  "cloudflared tunnel --url http://localhost:7880 --no-autoupdate",
+                    "server:migrate:up":  "cd apps/server \u0026\u0026 go run ./cmd/migrate up",
+                    "server:migrate:down":  "cd apps/server \u0026\u0026 go run ./cmd/migrate down",
+                    "server:migrate:force":  "cd apps/server \u0026\u0026 go run ./cmd/migrate force",
+                    "server:dev":  "cd apps/server \u0026\u0026 go run ./cmd/server",
+                    "server:test":  "cd apps/server \u0026\u0026 go test ./...",
+                    "desktop:publish:updates":  "npm run publish:updates --workspace @catwa/desktop --"
+                }
+}

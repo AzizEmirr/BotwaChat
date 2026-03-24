@@ -1,0 +1,15 @@
+title = "Catwa Gitleaks Config"
+
+[allowlist]
+description = "Ignore generated and non-source artifact paths"
+paths = [
+  '''^node_modules/''',
+  '''^deploy_staging/''',
+  '''^release/''',
+  '''^logs/''',
+  '''^tmp_index.*\.html$''',
+  '''^body\.txt(\.sig)?$''',
+  '''^cf_zones\.json$''',
+  '''^headers\.txt$'''
+]
+

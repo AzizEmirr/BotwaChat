@@ -1,0 +1,75 @@
+﻿[
+    {
+        "action":  "redirect",
+        "action_parameters":  {
+                                  "from_value":  {
+                                                     "preserve_query_string":  true,
+                                                     "status_code":  301,
+                                                     "target_url":  {
+                                                                        "expression":  "concat(\"https://catwa.chat\", http.request.uri.path)"
+                                                                    }
+                                                 }
+                              },
+        "description":  "Canonicalize www to apex",
+        "enabled":  true,
+        "expression":  "(http.host eq \"www.catwa.chat\")",
+        "id":  "d504d830bce641518a667ba1b3d8f214",
+        "last_updated":  "2026-03-14T00:20:58.717959Z",
+        "ref":  "d504d830bce641518a667ba1b3d8f214",
+        "version":  "1"
+    },
+    {
+        "action":  "redirect",
+        "action_parameters":  {
+                                  "from_value":  {
+                                                     "status_code":  302,
+                                                     "target_url":  {
+                                                                        "expression":  "concat(\"https://catwa.chat\", http.request.uri.path)"
+                                                                    }
+                                                 }
+                              },
+        "description":  "Redirect downloads host to apex",
+        "enabled":  true,
+        "expression":  "(http.host eq \"downloads.catwa.chat\")",
+        "id":  "e01d30f5c6a14258985417c2bcdaa97b",
+        "last_updated":  "2026-03-20T07:25:10.713474Z",
+        "ref":  "e01d30f5c6a14258985417c2bcdaa97b",
+        "version":  "1"
+    },
+    {
+        "action":  "redirect",
+        "action_parameters":  {
+                                  "from_value":  {
+                                                     "status_code":  302,
+                                                     "target_url":  {
+                                                                        "value":  "https://catwa.chat/updates/stable/Catwa_0.1.3_x64-setup.exe"
+                                                                    }
+                                                 }
+                              },
+        "description":  "Installer alias to latest setup",
+        "enabled":  true,
+        "expression":  "(http.request.uri.path eq \"/updates/stable/Catwa_Installer_x64.exe\")",
+        "id":  "b453a4880b4d47c4bc6b2cfb4c4aa4a7",
+        "last_updated":  "2026-03-20T07:40:59.300447Z",
+        "ref":  "b453a4880b4d47c4bc6b2cfb4c4aa4a7",
+        "version":  "1"
+    },
+    {
+        "action":  "redirect",
+        "action_parameters":  {
+                                  "from_value":  {
+                                                     "status_code":  302,
+                                                     "target_url":  {
+                                                                        "value":  "https://catwa.chat/updates/stable/Catwa_0.1.3_x64-setup.exe"
+                                                                    }
+                                                 }
+                              },
+        "description":  "Legacy typo installer alias",
+        "enabled":  true,
+        "expression":  "(http.request.uri.path eq \"/updates/stable/Catwa_slnstaller_x64.exe\" or http.request.uri.path eq \"/updates/stable/Catwa_sInstaller_x64.exe\")",
+        "id":  "dc8a23b9aec846c49e4074e218d545f1",
+        "last_updated":  "2026-03-20T07:41:00.310781Z",
+        "ref":  "dc8a23b9aec846c49e4074e218d545f1",
+        "version":  "1"
+    }
+]

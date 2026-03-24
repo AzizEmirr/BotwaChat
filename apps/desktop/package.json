@@ -1,0 +1,90 @@
+{
+  "name": "@catwa/desktop",
+  "private": true,
+  "version": "0.1.22",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 1420",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "check:encoding": "node ./scripts/check-mojibake.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "electron:start": "node ./scripts/run-electron.cjs ./electron/main.cjs",
+    "electron:dev": "concurrently -k \"npm:dev\" \"wait-on tcp:1420 && cross-env CATWA_DEV_SERVER_URL=http://127.0.0.1:1420 node ./scripts/run-electron.cjs ./electron/main.cjs\"",
+    "installer:theme": "powershell -ExecutionPolicy Bypass -File ./scripts/generate-electron-installer-theme.ps1",
+    "electron:build": "npm run installer:theme && npm run build && electron-builder --config.electronDist=./node_modules/electron/dist",
+    "release:stable": "npm run electron:build",
+    "publish:updates": "node ./scripts/publish-electron-updates.mjs"
+  },
+  "dependencies": {
+    "@catwa/shared": "file:../../packages/shared",
+    "@radix-ui/react-context-menu": "^2.2.15",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-switch": "^1.2.6",
+    "electron-updater": "^6.6.2",
+    "framer-motion": "^11.18.2",
+    "livekit-client": "^2.17.2",
+    "lucide-react": "^0.487.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.30.2",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "35.1.5",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vitest": "^3.2.4",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "electronVersion": "35.1.5",
+    "appId": "chat.catwa.desktop",
+    "productName": "Catwa Desktop",
+    "directories": {
+      "output": "release-electron"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.cjs"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/installer/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "installerIcon": "build/installer/icon.ico",
+      "uninstallerIcon": "build/installer/icon.ico",
+      "installerHeaderIcon": "build/installer/icon.ico",
+      "installerHeader": "build/installer/header.bmp",
+      "installerSidebar": "build/installer/sidebar.bmp",
+      "artifactName": "Catwa Desktop Setup ${version}.${ext}"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://downloads.catwa.chat/updates/stable"
+      }
+    ]
+  }
+}

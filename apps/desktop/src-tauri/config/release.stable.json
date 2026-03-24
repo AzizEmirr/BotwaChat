@@ -1,0 +1,10 @@
+{
+  "bundle": {
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "endpoints": ["https://downloads.catwa.chat/updates/stable/latest.json"]
+    }
+  }
+}

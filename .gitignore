@@ -1,0 +1,62 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Build artifacts
+dist/
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+apps/server/.env
+apps/server/.env.local
+apps/server/.env.*.local
+
+# Go
+bin/
+*.test
+
+# Rust / Tauri
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+apps/desktop/src-tauri/keys/*.key
+apps/desktop/src-tauri/keys/*.pem
+apps/desktop/src-tauri/keys/*.private
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime data
+apps/server/storage/
+!apps/server/storage/.gitkeep
+logs/
+
+# Local scratch / temp
+.tmp/
+.tmp_restore/
+.tmp_*
+*.tmp
+*.bak
+*.backup
+body.txt
+body.txt.sig
+headers.txt
+cf_zones.json
+
+# Local release/build outputs
+release/
+apps/desktop/release-electron/
+apps/server/dist/
+apps/server/.tmp/
+
+# Staging snapshot (local only)
+deploy_staging/
+
+# Local tooling binaries
+.tools/plink.exe
+.tools/pscp.exe
