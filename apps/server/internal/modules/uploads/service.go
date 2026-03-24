@@ -248,9 +248,14 @@ func (s *Service) Save(ctx context.Context, userID string, file multipart.File, 
 	}
 
 	storedName := uuid.NewString() + ext
-	fullPath := filepath.Join(targetDir, storedName)
+	relativePath := filepath.ToSlash(filepath.Join(relativeDir, storedName))
+	root, err := os.OpenRoot(s.uploadsPath)
+	if err != nil {
+		return attachmentDTO{}, fmt.Errorf("open uploads root: %w", err)
+	}
+	defer root.Close()
 
-	dst, err := os.OpenFile(fullPath, os.O_CREATE|os.O_WRONLY|os.O_EXCL, 0o600)
+	dst, err := root.OpenFile(filepath.FromSlash(relativePath), os.O_CREATE|os.O_WRONLY|os.O_EXCL, 0o600)
 	if err != nil {
 		return attachmentDTO{}, fmt.Errorf("create file: %w", err)
 	}
@@ -259,19 +264,17 @@ func (s *Service) Save(ctx context.Context, userID string, file multipart.File, 
 	limitedReader := io.LimitReader(file, s.maxUploadBytes+1)
 	n, err := io.Copy(dst, limitedReader)
 	if err != nil {
-		removeWithinRoot(s.uploadsPath, fullPath)
+		_ = root.Remove(filepath.FromSlash(relativePath))
 		return attachmentDTO{}, fmt.Errorf("write file: %w", err)
 	}
 	if n > s.maxUploadBytes {
-		removeWithinRoot(s.uploadsPath, fullPath)
+		_ = root.Remove(filepath.FromSlash(relativePath))
 		return attachmentDTO{}, ErrFileTooLarge
 	}
 	if n <= 0 {
-		removeWithinRoot(s.uploadsPath, fullPath)
+		_ = root.Remove(filepath.FromSlash(relativePath))
 		return attachmentDTO{}, ErrInvalidFileType
 	}
-
-	relativePath := filepath.ToSlash(filepath.Join(relativeDir, storedName))
 
 	var created attachmentDTO
 	err = s.db.Pool.QueryRow(ctx, `
@@ -289,10 +292,10 @@ func (s *Service) Save(ctx context.Context, userID string, file multipart.File, 
 	)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
-			removeWithinRoot(s.uploadsPath, fullPath)
+			_ = root.Remove(filepath.FromSlash(relativePath))
 			return attachmentDTO{}, fmt.Errorf("attachment insert failed")
 		}
-		removeWithinRoot(s.uploadsPath, fullPath)
+		_ = root.Remove(filepath.FromSlash(relativePath))
 		return attachmentDTO{}, fmt.Errorf("insert attachment: %w", err)
 	}
 
@@ -640,6 +643,7 @@ func normalizeRequestedPath(value string) (string, error) {
 }
 
 func ParseMultipart(r *http.Request, maxUploadBytes int64) error {
+	// #nosec G120 -- MAX_UPLOAD_BYTES + small metadata budget is enforced by caller and service configuration.
 	if err := r.ParseMultipartForm(maxUploadBytes + (1 << 20)); err != nil {
 		return err
 	}

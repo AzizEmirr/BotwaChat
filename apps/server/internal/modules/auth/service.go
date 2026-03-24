@@ -23,6 +23,7 @@ var (
 )
 
 // Precomputed bcrypt hash for "catwa.invalid.password" used to reduce login timing differences.
+// #nosec G101 -- This is a non-secret, static dummy bcrypt hash used only for timing-equalization.
 const dummyPasswordHash = "$2a$12$wYIrYhtN2fTHR.AElO4J2O0SG2Vf4MZN7sufx7z8X/jjYHvuSEu6a"
 const maxRefreshTokenLength = 8192
 

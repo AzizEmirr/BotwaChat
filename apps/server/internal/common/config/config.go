@@ -17,6 +17,7 @@ import (
 const (
 	defaultAppEnv                = "development"
 	defaultHTTPAddr              = ":8080"
+	// #nosec G101 -- Development fallback DSN for local setup only; production requires POSTGRES_URL.
 	defaultPostgresURLDev        = "postgres://postgres:postgres@localhost:5432/catwa?sslmode=disable"
 	defaultPostgresURLProd       = ""
 	defaultCORSOriginsDev        = "http://localhost:1420,http://127.0.0.1:1420,tauri://localhost,https://tauri.localhost,http://tauri.localhost,app://localhost"

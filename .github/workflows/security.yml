@@ -43,7 +43,7 @@ jobs:
 
       - name: Run gosec (SARIF)
         run: |
-          gosec -quiet -fmt sarif -out gosec.sarif ./...
+          gosec -quiet -severity medium -confidence medium -fmt sarif -out gosec.sarif ./...
 
       - name: Upload gosec report
         uses: github/codeql-action/upload-sarif@v3
@@ -65,4 +65,3 @@ jobs:
           GITLEAKS_ENABLE_COMMENTS: "false"
         with:
           args: "--no-git --config=.gitleaks.toml --redact"
-

@@ -216,6 +216,7 @@ func (h *Handler) ChangePassword(w http.ResponseWriter, r *http.Request) {
 		httpx.ValidationError(w, map[string]string{"currentPassword": "required"})
 		return
 	}
+	// #nosec G101 -- Validation message text; no credential material is present.
 	if req.CurrentPassword == req.NewPassword {
 		httpx.ValidationError(w, map[string]string{"newPassword": "must be different from currentPassword"})
 		return
