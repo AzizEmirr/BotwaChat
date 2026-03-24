@@ -2,6 +2,15 @@
 
 Catwa, masaüstü + web çalışan gerçek zamanlı sohbet uygulamasıdır.
 
+Resmi site: **https://catwa.chat**  
+Geliştirici: **Kyu Software**
+
+## Durum
+- Bu proje şu anda **Beta (active development)** aşamasındadır.
+- API ve arayüz davranışları yeni sürümlerde değişebilir.
+- Bazı özelliklerde performans/senkronizasyon iyileştirmeleri devam ediyor.
+- Production kullanımından önce test ortamında doğrulama önerilir.
+
 ## Teknoloji
 - Frontend: React + TypeScript + TailwindCSS
 - Desktop: Tauri
@@ -23,7 +32,7 @@ Catwa, masaüstü + web çalışan gerçek zamanlı sohbet uygulamasıdır.
 
 ## Gereksinimler
 - Node.js 20+
-- npm 10+   
+- npm 10+
 - Go 1.25+
 - PostgreSQL 15+
 - Rust stable (Tauri için)
@@ -44,7 +53,7 @@ Catwa, masaüstü + web çalışan gerçek zamanlı sohbet uygulamasıdır.
 ## Çalıştırma
 - Backend: `npm run server:dev`
 - Web (Vite): `npm run desktop:dev`
-- Desktop (Tauri): `npm run desktop:tauri:dev`
+- Desktop (Electron): `npm run desktop:start`
 
 ## Desktop Dağıtım (Installer + Updater)
 - Stable release: `npm run desktop:release:stable`
@@ -56,7 +65,7 @@ Catwa, masaüstü + web çalışan gerçek zamanlı sohbet uygulamasıdır.
 - Kanal manifesti: `release/updates/stable/latest.json`
 - Kanal download haritası: `release/updates/channels.json`
 
-Detaylı akış: `docs/distribution.md`
+Detaylı akış: `docs/distribution.md`  
 Güvenlik politikası: `.github/SECURITY.md`
 
 ## Web Download Linkleri
