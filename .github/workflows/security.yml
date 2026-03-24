@@ -46,8 +46,14 @@ jobs:
         run: |
           gosec -quiet -severity medium -confidence medium -fmt sarif -out gosec.sarif ./...
 
+      - name: Ensure SARIF file exists
+        run: |
+          if [ ! -f gosec.sarif ]; then
+            echo '{"version":"2.1.0","runs":[]}' > gosec.sarif
+          fi
+
       - name: Upload gosec report
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: apps/server/gosec.sarif
 
