@@ -28,7 +28,8 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version-file: apps/server/go.mod
+          go-version: "1.25.x"
+          check-latest: true
 
       - name: Download dependencies
         run: go mod download
